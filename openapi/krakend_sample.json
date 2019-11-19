@@ -8,12 +8,12 @@
     "extra_config": {
         "github_com/devopsfaith/krakend/transport/http/server/handler": {
             "name": "github.com/cboitel/krakend-plugins/openapi",
-            
-            "level":  "DEBUG",
-            "prefix": "[OPENAPI]",
-            "syslog": false,
-            "stdout": true
-            
+            "github_com/devopsfaith/krakend-gologging": {
+              "level":  "DEBUG",
+              "prefix": "[OPENAPI]",
+              "syslog": false,
+              "stdout": true
+            }
         },
       "github_com/devopsfaith/krakend-gologging": {
         "level":  "DEBUG",
@@ -41,11 +41,10 @@
         {
             "endpoint": "/test",
             "method": "GET",
-            "headers_to_pass": ["Authorization", "Content-Type"],
             "backend": [
                 {
                     "host": [
-                        "http://127.0.0.1:8000"
+                        "http://127.0.0.1/"
                     ]
                 }
             ]
