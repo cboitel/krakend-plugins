@@ -1,5 +1,7 @@
 package main
 
+import "fmt"
+
 // PluginVersion defined version of plugin
 var PluginVersion = "undefined"
 
