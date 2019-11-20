@@ -4,7 +4,7 @@
 .PHONY: clean build all
 
 BIN_NAME := krakend_openapi.so
-VERSION := 0.0.1
+VERSION := 0.1.0
 PKGNAME := krakend
 LICENSE := Apache 2.0
 VENDOR=
@@ -20,7 +20,7 @@ all: test
 build:
 	@echo "Building the plugin..."
 	go get .
-	go build -buildmode=plugin -ldflags="-X github.com/cboitel/krakend-plugins/openapi/PluginVersion=${VERSION}" -o ${BIN_NAME} .
+	go build -buildmode=plugin -ldflags="-X main.PluginVersion=${VERSION}" -o ${BIN_NAME} .
 	@echo "You can now use ./${BIN_NAME}"
 
 test: build
