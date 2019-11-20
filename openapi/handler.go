@@ -32,9 +32,9 @@ func (r registerer) registerHandlers(ctx context.Context, extra map[string]inter
 	if name != string(r) {
 		return nil, fmt.Errorf("unknown register %s", name)
 	}
-	logger, logger_err := gologging.NewLogger(extra)
-	if logger_err != nil {
-		return nil, logger_err
+	logger, loggerErr := gologging.NewLogger(extra)
+	if loggerErr != nil {
+		return nil, loggerErr
 	}
 	// return the actual handler wrapping or your custom logic so it can be used as a replacement for the default http handler
 	return http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
@@ -43,9 +43,3 @@ func (r registerer) registerHandlers(ctx context.Context, extra map[string]inter
 		logger.Info("processed", html.EscapeString(req.URL.Path))
 	}), nil
 }
-
-func init() {
-	fmt.Println("krakend-openapi handler plugin loaded!!!")
-}
-
-func main() {}
