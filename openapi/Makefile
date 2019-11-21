@@ -11,8 +11,8 @@ RELEASE := 0
 DESC := Open API Client Plugin for krakend API gateway
 MAINTAINER := Christian Boitel <christian.boitel@gmail.com>
 GOLANG_VERSION := 1.13
-
-GO_SRC=$(wildcard *.go) 
+GO_SRC=$(wildcard *.go)
+NOW = $(shell date) 
 
 .PHONY: clean build all test
 
@@ -23,7 +23,7 @@ build: ${BIN_NAME}
 ${BIN_NAME}: ${GO_SRC}
 	@echo "Building the plugin..."
 	go get .
-	go build -buildmode=plugin -ldflags="-X main.PluginVersion=${VERSION}" -o ${BIN_NAME} .
+	go build -buildmode=plugin -ldflags="-X main.PluginVersion=${VERSION} -X main.PluginBuildDate=${date}" -o ${BIN_NAME} .
 	@echo "You can now use ./${BIN_NAME}"
 
 test: build

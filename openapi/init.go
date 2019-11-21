@@ -1,17 +1,27 @@
 package main
 
 import (
+	"time"
+
 	gologging "github.com/op/go-logging"
 )
 
-// PluginVersion defined version of plugin
-var PluginVersion = "undefined"
+// PluginVersion defines version of plugin
+var PluginVersion = "develop"
+
+// PluginBuildDate defines date at which build occured
+var PluginBuildDate = time.Now().String()
+
+// PluginName defines name of plugin used in config
+var PluginName = "github.com/cboitel/krakend-plugins/openapi"
 
 var openapiLogger *gologging.Logger
 
 func init() {
 	openapiLogger = gologging.MustGetLogger("OPENAPI")
-	openapiLogger.Info("openapi plugin: version", PluginVersion, "loaded !")
+	openapiLogger.Info("openapi plugin: version:", PluginVersion)
+	openapiLogger.Info("openapi plugin: buildDate:", PluginBuildDate)
+	openapiLogger.Info("openapi plugin: name:", PluginName)
 }
 
 func main() {}
