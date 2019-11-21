@@ -3,11 +3,11 @@ A http server handler plugin for kraken API Gateway to support OpenAPi
 
 # Building
 
-    # build
+    # build plugin
     make build
-    # test
+    # launch testes : will also build prior to running tests
     make test
-    # clean
+    # clean : deletes plugin and runs a go clean 
     make clean
-    # build & test
+    # same as test
     make all
