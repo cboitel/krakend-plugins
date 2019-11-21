@@ -1,8 +1,6 @@
 # This Makefile is a simple example that demonstrates usual steps to build a binary that can be run in the same
 # architecture that was compiled in. The "ldflags" in the build assure that any needed dependency is included in the
 # binary and no external dependencies are needed to run the service.
-.PHONY: clean build all
-
 BIN_NAME := krakend_openapi.so
 VERSION := 0.1.0
 PKGNAME := krakend
@@ -14,10 +12,15 @@ DESC := Open API Client Plugin for krakend API gateway
 MAINTAINER := Christian Boitel <christian.boitel@gmail.com>
 GOLANG_VERSION := 1.13
 
+GO_SRC=$(wildcard *.go) 
+
+.PHONY: clean build all test
 
 all: test
 
-build:
+build: ${BIN_NAME}
+
+${BIN_NAME}: ${GO_SRC}
 	@echo "Building the plugin..."
 	go get .
 	go build -buildmode=plugin -ldflags="-X main.PluginVersion=${VERSION}" -o ${BIN_NAME} .
