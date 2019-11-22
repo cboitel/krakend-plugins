@@ -13,7 +13,7 @@ var PluginVersion = "develop"
 var PluginBuildDate = time.Now().String()
 
 // PluginName defines name of plugin used in config
-var PluginName = "github.com/cboitel/krakend-plugins/openapi"
+var PluginName = "github_com/cboitel/krakend-plugins/openapi"
 
 var openapiLogger *gologging.Logger
 
