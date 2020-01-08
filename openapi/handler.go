@@ -54,7 +54,7 @@ func (r handlerRegisterer) registerHandlers(ctx context.Context, extra map[strin
 		if urlRegexp.MatchString(req.URL.RequestURI()) {
 			openapiLogger.Debug(handlerFuncLogPrefix + "intercepting")
 			w.Header().Set("content-type", "text/plain")
-			w.Write([]byte("Hello from " + handlerFuncLogPrefix + " !\n"))
+			w.Write([]byte("Hello from " + handlerFuncLogPrefix + " !"))
 		} else {
 			openapiLogger.Debug(handlerFuncLogPrefix + "serving using original handler")
 			originalHandler.ServeHTTP(w, req)

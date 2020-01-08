@@ -52,9 +52,8 @@ func (r clientRegisterer) registerClients(ctx context.Context, extra map[string]
 		openapiLogger.Debug(clientFuncLogPrefix + fmt.Sprintf("start of processing %+v", req))
 		if urlRegexp.MatchString(req.URL.RequestURI()) {
 			openapiLogger.Debug(clientFuncLogPrefix + "intercepting")
-			w.Header().Set("Content-Type", "text/plain")
-			w.WriteHeader(200)
-			w.Write([]byte("Hello from " + PluginName + "-client !"))
+			w.Header().Set("content-type", "text/plain")
+			w.Write([]byte("Hello from " + clientFuncLogPrefix + " !"))
 		} else {
 			openapiLogger.Debug(clientFuncLogPrefix + "do nothing")
 		}
