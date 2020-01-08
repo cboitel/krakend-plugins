@@ -55,6 +55,9 @@ func (r clientRegisterer) registerClients(ctx context.Context, extra map[string]
 			w.Header().Set("content-type", "text/plain")
 			w.Write([]byte("Hello from " + clientFuncLogPrefix + " !"))
 		} else {
+			w.Header().Set("content-type", "text/plain")
+			w.WriteHeader(http.StatusBadGateway)
+			w.Write([]byte("Url to process not in pattern"))
 			openapiLogger.Debug(clientFuncLogPrefix + "do nothing")
 		}
 		openapiLogger.Debug(clientFuncLogPrefix + "end of processing")
