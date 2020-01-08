@@ -6,15 +6,9 @@
     "timeout": "3s",
     "plugin": { "folder": "./", "pattern":".so"},
     "extra_config": {
-        "github_com/devopsfaith/krakend/transport/http/server/handler": {
-            "name": "github.com/cboitel/krakend-plugins/openapi",
-            "github_com/devopsfaith/krakend-gologging": {
-              "level":  "DEBUG",
-              "prefix": "[OPENAPI]",
-              "syslog": false,
-              "stdout": true
-            }
-        },
+      "github_com/devopsfaith/krakend/transport/http/server/handler": {
+        "name": "github.com/cboitel/krakend-plugins/openapi"
+      },
       "github_com/devopsfaith/krakend-gologging": {
         "level":  "DEBUG",
         "prefix": "[KRAKEND]",
@@ -42,11 +36,16 @@
             "endpoint": "/test",
             "method": "GET",
             "backend": [
-                {
-                    "host": [
-                        "http://127.0.0.1/"
-                    ]
-                }
+              {
+                "extra_config": {
+                  "github.com/devopsfaith/krakend/transport/http/client/executor": {
+                      "name": "github.com/cboitel/krakend-plugins/openapi"
+                  }              
+                },
+                "host": [
+                  "http://127.0.0.1"
+                ]
+              }
             ]
         }
     ]

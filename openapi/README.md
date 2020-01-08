@@ -1,5 +1,5 @@
 # openapi plugin
-A http server handler plugin for kraken API Gateway to support OpenAPi
+A http server handler plugin for kraken API Gateway to support OpenAPI
 
 # Building
 
