@@ -44,10 +44,11 @@
                 "github.com/devopsfaith/krakend/transport/http/client/executor": {
                   "name": "github_com/cboitel/krakend-plugins/openapi",
                   "github_com/cboitel/krakend-plugins/openapi": {
-                    "url": "^/1testagain"
+                    "url": "^/testagain/intercept"
                   }
                 }
               },
+              "encoding":"no-op",
               "url_pattern": "/testagain",
               "host": [
                 "http://127.0.0.1"
