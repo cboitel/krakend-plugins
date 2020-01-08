@@ -1,8 +1,6 @@
 package main
 
 import (
-	"time"
-
 	gologging "github.com/op/go-logging"
 )
 
@@ -10,7 +8,7 @@ import (
 var PluginVersion = "develop"
 
 // PluginBuildDate defines date at which build occured
-var PluginBuildDate = time.Now().String()
+var PluginBuildDate = "N/A"
 
 // PluginName defines name of plugin used in config
 var PluginName = "github_com/cboitel/krakend-plugins/openapi"
