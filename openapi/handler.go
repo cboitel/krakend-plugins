@@ -53,9 +53,8 @@ func (r handlerRegisterer) registerHandlers(ctx context.Context, extra map[strin
 		openapiLogger.Debug(handlerFuncLogPrefix + fmt.Sprintf("start of processing %+v", req))
 		if urlRegexp.MatchString(req.URL.RequestURI()) {
 			openapiLogger.Debug(handlerFuncLogPrefix + "intercepting")
-			w.Header().Set("Content-Type", "text-plain")
-			w.WriteHeader(200)
-			w.Write([]byte("Hello from " + PluginName + "-handler !\n"))
+			w.Header().Set("content-type", "text/plain")
+			w.Write([]byte("Hello from " + handlerFuncLogPrefix + " !\n"))
 		} else {
 			openapiLogger.Debug(handlerFuncLogPrefix + "serving using original handler")
 			originalHandler.ServeHTTP(w, req)
