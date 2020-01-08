@@ -9,7 +9,7 @@
       "github_com/devopsfaith/krakend/transport/http/server/handler": {
         "name": "github_com/cboitel/krakend-plugins/openapi",
         "github_com/cboitel/krakend-plugins/openapi": {
-          "url": "^/test/"
+          "url": "^/handler"
         }
       },
       "github_com/devopsfaith/krakend-gologging": {
@@ -35,26 +35,47 @@
       }
     },
     "endpoints": [
-        {
-          "endpoint": "/test2",
-          "method": "GET",
-          "backend": [
-            {
-              "extra_config": {
-                "github.com/devopsfaith/krakend/transport/http/client/executor": {
-                  "name": "github_com/cboitel/krakend-plugins/openapi",
-                  "github_com/cboitel/krakend-plugins/openapi": {
-                    "url": "^/testagain/intercept"
-                  }
+      {
+        "endpoint": "/client",
+        "method": "GET",
+        "backend": [
+          {
+            "extra_config": {
+              "github.com/devopsfaith/krakend/transport/http/client/executor": {
+                "name": "github_com/cboitel/krakend-plugins/openapi",
+                "github_com/cboitel/krakend-plugins/openapi": {
+                  "url": "^/test"
                 }
-              },
-              "encoding":"no-op",
-              "url_pattern": "/testagain",
-              "host": [
-                "http://127.0.0.1"
-              ]
-            }
-          ]
-        }
+              }
+            },
+            "encoding":"no-op",
+            "url_pattern": "/test",
+            "host": [
+              "http://127.0.0.1"
+            ]
+          }
+        ]
+      },
+      {
+        "endpoint": "/client2",
+        "method": "GET",
+        "backend": [
+          {
+            "extra_config": {
+              "github.com/devopsfaith/krakend/transport/http/client/executor": {
+                "name": "github_com/cboitel/krakend-plugins/openapi",
+                "github_com/cboitel/krakend-plugins/openapi": {
+                  "url": "^/neverworks"
+                }
+              }
+            },
+            "encoding":"no-op",
+            "url_pattern": "/testagain",
+            "host": [
+              "http://127.0.0.1"
+            ]
+          }
+        ]
+      }
     ]
 }
