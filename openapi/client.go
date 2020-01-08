@@ -10,12 +10,11 @@ import (
 	guuid "github.com/google/uuid"
 )
 
+type clientRegisterer string
+
 // ClientRegisterer is the symbol the plugin loader will try to load. It must implement the RegisterClient interface
 var ClientRegisterer = clientRegisterer(PluginName)
-
 var clientLogPrefix = "[" + PluginName + "-client]: "
-
-type clientRegisterer string
 
 func (r clientRegisterer) RegisterClients(f func(
 	name string,

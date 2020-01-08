@@ -10,11 +10,10 @@ import (
 	guuid "github.com/google/uuid"
 )
 
-// HandlerRegisterer is the symbol the plugin loader will try to load. It must implement the Registerer interface
-var HandlerRegisterer = handlerRegisterer(PluginName)
-
 type handlerRegisterer string
 
+// HandlerRegisterer is the symbol the plugin loader will try to load. It must implement the Registerer interface
+var HandlerRegisterer = handlerRegisterer(PluginName)
 var handlerLogPrefix = "[" + PluginName + "-handler]: "
 
 func (r handlerRegisterer) RegisterHandlers(f func(
@@ -47,7 +46,7 @@ func (r handlerRegisterer) registerHandlers(ctx context.Context, extra map[strin
 		return nil, fmt.Errorf(handlerLogPrefix+"url '%s' not a regex: %s", urlPattern, regexpCompileErr)
 	}
 	openapiLogger.Info(handlerLogPrefix + "enabled to intercept " + urlPattern)
-	
+
 	// return the actual handler wrapping or your custom logic so it can be used as a replacement for the default http handler
 	return http.HandlerFunc(func(w http.ResponseWriter, req *http.Request) {
 		handlerFuncLogPrefix := handlerLogPrefix + "[" + guuid.New().String() + "] "
